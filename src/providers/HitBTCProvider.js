@@ -1,6 +1,7 @@
 import DataProvider from '../classes/DataProvider.js';
 import Order from '../classes/Order';
 import request from 'request-promise';
+import os from 'os';
 
 class HitBTCProvider extends DataProvider{
     constructor()
@@ -15,7 +16,8 @@ class HitBTCProvider extends DataProvider{
     }
 
     connect(){
-        request(this.baseURL + '/ticker').then(function(response){
+        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL + '/ticker');
+        request(fullPath).then(function(response){
             return true;
         }).catch(function(err){
             console.log(err);
@@ -26,8 +28,9 @@ class HitBTCProvider extends DataProvider{
     getOpenOrders()
     {
         var provider = this;
+        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL + '/orderbook/' + this.getActiveCurrency());
         return request({
-            'uri': this.baseURL + '/orderbook/' + this.getActiveCurrency(),
+            'uri': fullPath,
             'json': true,
         }).then(function(response){
             if (response)

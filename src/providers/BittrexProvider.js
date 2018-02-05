@@ -1,6 +1,7 @@
 import DataProvider from '../classes/DataProvider.js';
 import Order from '../classes/Order.js';
 import request from 'request-promise';
+import os from 'os';
 
 class BittrexProvider extends DataProvider{
     constructor(){
@@ -14,7 +15,8 @@ class BittrexProvider extends DataProvider{
     }
 
     connect(){
-        request(this.baseURL.replace('%s', this.getActiveCurrency())).then(function(response){
+        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
+        return request(fullPath).then(function(response){
             return true;
         }).catch(function(err){
             console.log(err);
@@ -24,8 +26,9 @@ class BittrexProvider extends DataProvider{
 
     getSingleOrder()
     {
+        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
         return request({
-            'uri': this.baseURL.replace('%s', this.getActiveCurrency()),
+            'uri': fullPath,
             'json': true,
         }).then(function(response){
             if (response.result)
@@ -56,8 +59,9 @@ class BittrexProvider extends DataProvider{
     getOpenOrders()
     {
         var provider = this;
+        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
         return request({
-            'uri': this.baseURL.replace('%s', this.getActiveCurrency()),
+            'uri': fullPath,
             'json': true,
             }).then(function(response){
                 if (response.result)

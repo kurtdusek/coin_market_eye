@@ -3,9 +3,10 @@
 import DataProvider from './DataProvider.js';
 import Order from './Order.js';
 import PoloniexProvider from '../providers/PoloniexProvider.js'
+import BittrexProvider from '../providers/BittrexProvider.js'
 
 describe('Poloniext Data Provider Test Suite', function(){
-    let poloProvider = new PoloniexProvider();
+    let poloProvider = new BittrexProvider();
     it ('should be able to connect to the server', function(){
         return poloProvider.connect().then(function(result){
             expect(result).toBe(true);
