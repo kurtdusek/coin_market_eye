@@ -6,6 +6,7 @@ import os from 'os';
 class BittrexProvider extends DataProvider{
     constructor(){
         super('Bittrex');
+        //in this instance I implemented bittrext as a URL look up rather than leaning on someone else's API.
         this.baseURL = 'https://bittrex.com/api/v1.1/public/getorderbook?market=%s&type=both';
         this.currencyMap = {
             0: 'BTC-ETH',
@@ -15,7 +16,8 @@ class BittrexProvider extends DataProvider{
     }
 
     connect(){
-        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
+        //self proxying to get around CORS issues (check server.js for route)
+        let fullPath = 'https://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
         return request(fullPath).then(function(response){
             return true;
         }).catch(function(err){
@@ -26,7 +28,7 @@ class BittrexProvider extends DataProvider{
 
     getSingleOrder()
     {
-        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
+        let fullPath = 'https://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
         return request({
             'uri': fullPath,
             'json': true,
@@ -59,7 +61,7 @@ class BittrexProvider extends DataProvider{
     getOpenOrders()
     {
         var provider = this;
-        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
+        let fullPath = 'https://' + os.hostname()+ '/proxy/' + btoa(this.baseURL.replace('%s', this.getActiveCurrency()));
         return request({
             'uri': fullPath,
             'json': true,

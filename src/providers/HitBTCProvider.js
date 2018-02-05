@@ -16,7 +16,7 @@ class HitBTCProvider extends DataProvider{
     }
 
     connect(){
-        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL + '/ticker');
+        let fullPath = 'https://' + os.hostname()+ '/proxy/' + btoa(this.baseURL + '/ticker');
         request(fullPath).then(function(response){
             return true;
         }).catch(function(err){
@@ -28,7 +28,7 @@ class HitBTCProvider extends DataProvider{
     getOpenOrders()
     {
         var provider = this;
-        let fullPath = 'http://' + os.hostname()+ '/proxy/' + btoa(this.baseURL + '/orderbook/' + this.getActiveCurrency());
+        let fullPath = 'https://' + os.hostname()+ '/proxy/' + btoa(this.baseURL + '/orderbook/' + this.getActiveCurrency());
         return request({
             'uri': fullPath,
             'json': true,
