@@ -1,0 +1,14 @@
+{
+  "source": {
+    "include": [ "./src" ],
+    "exclude": [ ],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {"destination": "./public/docs"},
+  "templates":{
+    "default":{
+      "layoutFile": "./src/layout.tmpl"
+    }
+  }
+}

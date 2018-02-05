@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <title>Coin Market Eye</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="react-table.css">
+
+    <!-- Custom styles for this template -->
+
+</head>
+
+<body class="text-center">
+
+<div class="container w-100 h-100 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">Coin Market Eye</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link" href="about.html">About Me</a>
+                <a class="nav-link" href="/docs/DataProvider.html">Docs</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 text-left">
+                <h2>Thanks for looking!</h2>
+                <p>My name is Kurt Dusek, I built this app in response to the code challenge.</p>
+                <p>
+                    From an application architecture standpoint, my overall approach was to build a prototype for a DataProvider class which could be inherited from
+                    to easily create a standardized data source from multiple venders.
+                    A given exchange can be added to the app by implimenting this data provider class to wrap it's various API calls
+                    and converting its order book format to the Order class type.
+                </p>
+
+                <p>From there, the DataStore class utilizes dependency injection to consume each instance of a DataProvider
+                    and provides business logic to structure individual orders as a complete market for a given symbol. Additionally,
+                    the DataStore handles refreshing each DataProvider, searching and identifying overlaping orders, and passing structured
+                    market data into React.</p>
+
+                <p>
+                    In addition to the main requirement I completed all of the extra point items, and have included unit tests with the source code.
+                    I enjoyed the challenege in developing this, it allowed me to polish my javascript skills, learn a bit about React.js
+                    and  I appreciate the opportunity to apply for a position with your company. I've been curious about cryptocurrencies and
+                    blockchain technology for the last few years and the opportunity to get involved with an inovative company excites me very much.
+                </p>
+
+                <p>Thanks again<br/><br />
+
+                    -kurt</p>
+            </div>
+            <div class="col-4"><img src='./images/kurt.jpg'></div>
+        </div>
+    </div>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+    </footer>
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
